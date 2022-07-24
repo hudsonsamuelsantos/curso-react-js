@@ -9,6 +9,8 @@ import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
 import Container from './components/Container';
 import ExecuteFunction from './components/ExecuteFunction';
+import Message from './components/Message';
+import ChangeMessage from './components/ChangeMessage';
 
 function App() {
 
@@ -19,6 +21,10 @@ function App() {
     { id: 2, brand: "KIA", km: 1110, color: "Amarelo" },
     { id: 3, brand: "Aston Martin", km: 30950, color: "Verde" },
   ]
+
+  const [message, setMessage] = useState()
+
+  const handleMessage = msg => { setMessage(msg) }
 
   const ShowConsoleMessage = () => { console.log("Clicou!") }
 
@@ -58,6 +64,12 @@ function App() {
       </Container>
       {/* Função nas props */}
       <ExecuteFunction myFunction={ShowConsoleMessage} />
+      {/* State lift ou elevação de estado
+          Um elemento para exibir o estado e um para alterar
+          O estado é elevado para o pai pelo elemento que altera, e o pai passa para o filho que exibe.
+      */}
+      <Message msg={message} />
+      <ChangeMessage handleMessage={handleMessage} />
     </div>
   );
 }
