@@ -1,6 +1,7 @@
 import Setup from './assets/setup.jpg'
 import './App.css';
 import ManageData from './components/ManageData';
+import ListRender from './components/ListRender';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <img src={Setup} alt="Setup" />
 
       <ManageData />
+      <ListRender />
     </div>
   );
 }
