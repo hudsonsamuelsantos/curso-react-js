@@ -6,6 +6,7 @@ import ConditionalRender from './components/ConditionalRender';
 import { useState } from 'react';
 import ShowName from './components/ShowName';
 import CarDetails from './components/CarDetails';
+import Fragment from './components/Fragment';
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
           color={car.color}
         />
       ))}
+      {/* Fragment */}
+      <Fragment propFragment="Título 3" />
     </div>
   );
 }
