@@ -11,12 +11,18 @@ function App() {
 
   const [name] = useState("Hudson Santos")
 
+  const cars = [
+    { id: 1, brand: "Ferrari", km: 0, color: "Vermelha" },
+    { id: 1, brand: "KIA", km: 1110, color: "Amarelo" },
+    { id: 1, brand: "Aston Martin", km: 30950, color: "Verde" },
+  ]
+
   return (
     <div className="App">
       <h1>Seção 3</h1>
-      {/*Img na pasta públic pode ser acessada assim */}
+      {/* Img na pasta públic pode ser acessada assim */}
       <img src="/code.jpg" alt="Códigos" />
-      {/*Img em src tem que ser importada */}
+      {/* Img em src tem que ser importada */}
       <img src={Setup} alt="Setup" />
 
       <ManageData />
@@ -26,6 +32,18 @@ function App() {
       <ShowName name={name} />
       {/* Destructuring props */}
       <CarDetails brand="VW" km={10000} color="Azul" />
+      {/* Reaproveitando componentes */}
+      <CarDetails brand="Fiat" km={0} color="Branco" />
+
+      <CarDetails brand="Ford" km={1000} color="Amarelo" />
+      {/* Reaproveitamento feito com loop em array */}
+      {cars.map(car => (
+        <CarDetails
+          brand={car.brand}
+          km={car.km}
+          color={car.color}
+        />
+      ))}
     </div>
   );
 }
