@@ -7,6 +7,8 @@ import { useState } from 'react';
 import ShowName from './components/ShowName';
 import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
+import Container from './components/Container';
+import ExecuteFunction from './components/ExecuteFunction';
 
 function App() {
 
@@ -14,9 +16,11 @@ function App() {
 
   const cars = [
     { id: 1, brand: "Ferrari", km: 0, color: "Vermelha" },
-    { id: 1, brand: "KIA", km: 1110, color: "Amarelo" },
-    { id: 1, brand: "Aston Martin", km: 30950, color: "Verde" },
+    { id: 2, brand: "KIA", km: 1110, color: "Amarelo" },
+    { id: 3, brand: "Aston Martin", km: 30950, color: "Verde" },
   ]
+
+  const ShowConsoleMessage = () => { console.log("Clicou!") }
 
   return (
     <div className="App">
@@ -40,6 +44,7 @@ function App() {
       {/* Reaproveitamento feito com loop em array */}
       {cars.map(car => (
         <CarDetails
+          key={car.id}
           brand={car.brand}
           km={car.km}
           color={car.color}
@@ -47,6 +52,12 @@ function App() {
       ))}
       {/* Fragment */}
       <Fragment propFragment="Título 3" />
+      {/* Children */}
+      <Container>
+        <p>Conteúdo do container</p>
+      </Container>
+      {/* Função nas props */}
+      <ExecuteFunction myFunction={ShowConsoleMessage} />
     </div>
   );
 }
