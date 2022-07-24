@@ -3,8 +3,13 @@ import './App.css';
 import ManageData from './components/ManageData';
 import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionalRender';
+import { useState } from 'react';
+import ShowName from './components/ShowName';
 
 function App() {
+
+  const [name] = useState("Hudson Santos")
+
   return (
     <div className="App">
       <h1>Seção 3</h1>
@@ -16,6 +21,7 @@ function App() {
       <ManageData />
       <ListRender />
       <ConditionalRender />
+      <ShowName name={name} />
     </div>
   );
 }
