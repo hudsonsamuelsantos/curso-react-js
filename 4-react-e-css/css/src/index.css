@@ -1,0 +1,21 @@
+/* Css global, pode ser utilizado para estilos comuns em toda a aplicação, e para resetar estilos padrão do user agent */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 500px;
+}
+
+h1 {
+  color: red;
+}
+
+.red-title {
+  color: red;
+}
+
+.title {
+  background-color: black;
+  color: white;
+}
