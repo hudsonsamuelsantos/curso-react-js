@@ -8,6 +8,7 @@ function MyForm({ user }) {
     const [name, setName] = useState(user ? user.name : null)
     const [email, setEmail] = useState(user ? user.email : null)
     const [bio, setBio] = useState("")
+    const [role, setRole] = useState(user ? user.role : null)
 
     const handleName = e => {
         setName(e.target.value)
@@ -17,7 +18,7 @@ function MyForm({ user }) {
     const handleSubmit = e => {
         e.preventDefault()
         console.log("Eviando formulário")
-        console.log(name, email, bio)
+        console.log(name, email, bio, role)
 
         // Validação aqui
         // Envio aqui
@@ -49,6 +50,16 @@ function MyForm({ user }) {
                     <span>Bio:</span>
                     <textarea name="bio" placeholder="Digite uma descrição sobre você" value={bio} onChange={e => setBio(e.target.value)}></textarea>
                 </label>
+
+                <label>
+                    <span>Usuário:</span>
+                    <select name="role" onChange={e => setRole(e.target.value)} value={role}>
+                        <option value="user">Usuário</option>
+                        <option value="admin">Administrador</option>
+                        <option value="editor">Editor</option>
+                    </select>
+                </label>
+
                 <input type="submit" value="Enviar" />
             </form>
         </div>
