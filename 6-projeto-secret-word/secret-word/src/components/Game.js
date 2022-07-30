@@ -1,31 +1,70 @@
+import { useRef, useState } from 'react'
 import './Game.css'
 
-function Game({ verifyLetter }) {
+function Game({ 
+    verifyLetter,
+    pickedWord,
+    pickedCategory,
+    letters,
+    guessedLetters,
+    wrongLetters,
+    guesses,
+    score,
+}) {
+    
+    const [inputLetter, setInputLetter] = useState('')
+    const letterInputRef = useRef(null)
+    
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        verifyLetter(inputLetter)
+
+        setInputLetter('')
+
+        letterInputRef.current.focus()
+    }
+
     return (
         <div className='game'>
             <div className='points'>
-                <span>Pontuação: 000</span>
+                <span>Pontuação: {score}</span>
             </div>
             <h1>Descubra a palavra:</h1>
             <h2 className='tip'>
-                Dica: <span>Dica...</span> 
+                Dica: <span>{pickedCategory}</span> 
             </h2>
-            <p>Você ainda tem X tentativas</p>
+            <p>Você ainda tem {guesses} tentativas</p>
+            {console.log(letters)}
             <div className='wordContainer'>
-                <span className='letter'>A</span>
-                <span className="blankSquare"></span>
+                {letters.map((letter, i) =>
+                    guessedLetters.includes(letter) ? (
+                        <span className='letter' key={i}>{letter}</span>
+                    ) : (
+                        <span className="blankSquare" key={i}></span>
+                    )
+                )}
             </div>
             <div className='letterContainer'>
                 <p>Tente descobrir uma letra da palavra:</p>
                 <form>
-                <input type="text" name='letter' maxLength='1' required />
-                <button onClick={verifyLetter} >Jogar!</button>
+                <input 
+                    type="text" 
+                    name='letter' 
+                    maxLength='1' 
+                    required
+                    onChange={e => setInputLetter(e.target.value)} 
+                    value={inputLetter}
+                    ref={letterInputRef}
+                />
+                <button onClick={handleSubmit} >Jogar!</button>
             </form>
             </div>
             <div className="wrongLettersContainer">
                 <p>Letras já utilizadas:</p>
-                <span>a,</span>
-                <span>b,</span>
+                {wrongLetters.map(letter => (
+                    <span>{letter},</span>
+                ))}
             </div>
         </div>
     )
