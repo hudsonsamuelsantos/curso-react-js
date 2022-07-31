@@ -35,7 +35,7 @@ function Game({
                 Dica: <span>{pickedCategory}</span> 
             </h2>
             <p>Você ainda tem {guesses} tentativas</p>
-            {console.log(letters)}
+            
             <div className='wordContainer'>
                 {letters.map((letter, i) =>
                     guessedLetters.includes(letter) ? (
@@ -62,8 +62,8 @@ function Game({
             </div>
             <div className="wrongLettersContainer">
                 <p>Letras já utilizadas:</p>
-                {wrongLetters.map(letter => (
-                    <span >{letter},</span>
+                {wrongLetters.map((letter, i) => (
+                    <span key={i}>{letter},</span>
                 ))}
             </div>
         </div>
