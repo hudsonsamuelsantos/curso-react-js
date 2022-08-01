@@ -51,8 +51,11 @@ function App() {
     setPickedWord(word)
     setPickedCategory(category)
     setLetters(wordLetters)
-    setStage(stages[1].name)
   },[pickWordandCategory])
+
+  const goToGame = () => {
+    setStage(stages[1].name)
+  }
 
   const verifyLetter = (letter) => {
     console.log(letter)
@@ -112,7 +115,7 @@ function App() {
 
   return (
     <div className="App">
-      {stage === "start" && <StartScreen startGame={startGame} />}
+      {stage === "start" && <StartScreen startGame={startGame} goToGame={goToGame} />}
       {stage === "game" && <Game 
         verifyLetter={verifyLetter} 
         pickedWord={pickedWord}
