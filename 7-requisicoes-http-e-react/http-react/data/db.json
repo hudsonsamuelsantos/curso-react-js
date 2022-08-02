@@ -29,6 +29,11 @@
       "name": "Meia",
       "price": "5.9",
       "id": 6
+    },
+    {
+      "name": "Tênis",
+      "price": "190",
+      "id": 7
     }
   ]
 }
