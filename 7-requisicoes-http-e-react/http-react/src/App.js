@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { useFecth } from './hooks/useFetch';
 
@@ -7,9 +7,9 @@ const url = "http://localhost:3000/products"
 function App() {
 
   //Hook customizado
-  const { data: items, httpConfig } = useFecth(url)
+  const { data: items, httpConfig, loading } = useFecth(url)
 
-  const [products, setProducts] = useState([])
+  //const [products, setProducts] = useState([])
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
@@ -59,11 +59,16 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
+
+      {loading && <p>Carregando produtos...</p>}
+
+      {!loading && 
       <ul>
         {items && items.map(product => (
           <li key={product.id}>{product.name} - R$: {product.price}</li>
         ))}
-      </ul>
+      </ul>}
+      
       <div className='add_product'>
         <form onSubmit={handleSubmit}>
           <label>
@@ -74,7 +79,10 @@ function App() {
             Preço:
             <input type="text" value={price} name="price" onChange={(e) => setPrice(e.target.value)}/>
           </label>
-          <input type="submit" value="Adicionar" />
+
+          {loading && <input type="submit" disabled value="Aguarde" />}
+          {!loading && <input type="submit" value="Adicionar" />}
+          
         </form>
       </div>
     </div>

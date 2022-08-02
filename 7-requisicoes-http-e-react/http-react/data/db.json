@@ -34,6 +34,21 @@
       "name": "Tênis",
       "price": "190",
       "id": 7
+    },
+    {
+      "name": "Blusa de frio",
+      "price": "100",
+      "id": 8
+    },
+    {
+      "name": "Blusa de frio",
+      "price": "100",
+      "id": 9
+    },
+    {
+      "name": "Cinto",
+      "price": "10.9",
+      "id": 10
     }
   ]
 }
