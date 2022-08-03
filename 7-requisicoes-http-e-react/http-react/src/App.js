@@ -7,7 +7,7 @@ const url = "http://localhost:3000/products"
 function App() {
 
   //Hook customizado
-  const { data: items, httpConfig, loading } = useFecth(url)
+  const { data: items, httpConfig, loading, error } = useFecth(url)
 
   //const [products, setProducts] = useState([])
   const [name, setName] = useState("")
@@ -56,16 +56,36 @@ function App() {
     setPrice("")
   }
 
+  const handleDeleteButton = async (e) => {
+    e.preventDefault()
+
+    const product = {
+      name,
+      price,
+    }
+
+    httpConfig(product, "POST")
+    
+    setName("")
+    setPrice("")
+  }
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
+
+      {error && <p>{error}</p>}
 
       {loading && <p>Carregando produtos...</p>}
 
       {!loading && 
       <ul>
         {items && items.map(product => (
-          <li key={product.id}>{product.name} - R$: {product.price}</li>
+          <div className='product'>
+            <li key={product.id}>{product.name} - R$: {product.price}</li>
+            
+            <button onClick={handleDeleteButton}>Remover</button>
+          </div>
         ))}
       </ul>}
       

@@ -53,3 +53,11 @@ form input {
   flex-direction: column;
   margin-bottom: 15px;
 }
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 5px;
+}
