@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useFecth } from '../hooks/useFetch'
+import { useFetch } from '../hooks/useFetch'
 
 import './Home.css'
 
@@ -8,7 +8,7 @@ const url = "http://localhost:3000/products"
 
 function Home() {
 
-  const { data: items, error } = useFecth(url)
+  const { data: items, error } = useFetch(url)
 
   return (
     <div>
