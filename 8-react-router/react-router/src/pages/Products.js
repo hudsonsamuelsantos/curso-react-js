@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useFetch } from "../hooks/useFetch"
 
 function Products() {
@@ -22,6 +22,8 @@ function Products() {
             <li>
               <h2>{products.name}</h2>
               <p>R$: {products.price}</p>
+
+              <Link to={`/products/${products.id}/info`}>Mais informações</Link>
             </li>
           </ul>
         }
