@@ -1,13 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import "./NavBar.css"
 
 function NavBar() {
   return (
     <nav>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/about"}>About</Link>        
+        <NavLink 
+          to={"/"}
+          className={({ isActive }) => (isActive ? 'is-active' : 'not-active')}
+        >
+          Home
+        </NavLink>
+        
+        <NavLink to={"/about"}>About</NavLink>        
     </nav>
   )
 }

@@ -2,11 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import './App.css';
 import NavBar from './components/NavBar';
+import SearchForm from './components/SearchForm';
 import About from './pages/About';
 import Home from './pages/Home';
 import Info from './pages/Info';
 import NotFound from './pages/NotFound';
 import Products from './pages/Products';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
 
       <BrowserRouter>
       <NavBar />
+      <SearchForm />
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/about' element={<About />}/>
@@ -22,6 +25,8 @@ function App() {
           <Route path='/products/:id' element={<Products />}/>
           {/* Nested Route */}
           <Route path='/products/:id/info' element={<Info />}/>
+          {/* Search */}
+          <Route path='/search' element={<Search />}/>
           {/* No match route */}
           <Route path='*' element={<NotFound />}/>
         </Routes>
