@@ -11,12 +11,20 @@ function Home() {
   // Utilização do Hook personalizado para o contexto 
   const { counter } = useCounterContext()
 
-  const { color } = useTitleColorContext()
+  const { color, dispatch } = useTitleColorContext()
+
+  const setTitleColor = color => {
+    dispatch({ type: color })
+  }
 
   return (
     <div>
       <h2 style={{ color: color }}>Número do contador: {counter}</h2>
       <ChangeCounter />
+      <div>
+        <button onClick={() => setTitleColor('RED')}>Vermelho</button>
+        <button onClick={() => setTitleColor('BLUE')}>Azul</button>
+      </div>
     </div>
   )
 }

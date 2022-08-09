@@ -1,19 +1,26 @@
+// useReducer altera vários estados (2 ou mais) por meio de switch por exemplo
 import { createContext, useReducer } from "react";
 
 export const TitleColorContext = createContext()
 
-export const titleColorReducer = (state, action) = {
- 
+export const titleColorReducer = (state, action) => {
+   
+    switch(action.type) {
+        case 'RED':
+            return {...state, color: 'red'}
+        case 'BLUE':
+            return {...state, color: 'blue'}
+        default:
+            return state
+    }
 }
 
 export const TitleColorContextProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(titleColorReducer, { color: 'purple' })
 
-    console.log(state)
-
     return (
-        <TitleColorContextProvider value={{...state}}>
+        <TitleColorContextProvider value={{...state, dispatch}}>
             {children}
         </TitleColorContextProvider>
     )
