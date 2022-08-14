@@ -7,6 +7,7 @@ import { useAuthValue } from '../context/AuthContext'
 function NavBar() {
 
     const { user } = useAuthValue()
+    const { logout } = useAuthentication()
 
   return (
     <nav className={styles.navbar}>
@@ -39,6 +40,11 @@ function NavBar() {
                         <NavLink to='/posts/create' className={({isActive}) => (isActive ? styles.active : '')}>Criar Post</NavLink>
                     </li>
                 </>
+            }
+            {user &&
+                <li>
+                    <button onClick={logout}>Sair</button>
+                </li>
             }
         </ul>
     </nav>
