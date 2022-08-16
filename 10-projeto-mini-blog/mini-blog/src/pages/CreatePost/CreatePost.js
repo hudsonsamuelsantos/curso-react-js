@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './CreatePost.module.css'
 import { useIsertDocument } from '../../hooks/useInsertDocument'
 import { useAuthValue } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 function CreatePost() {
 
@@ -15,20 +16,39 @@ function CreatePost() {
 
   const { user } = useAuthValue()
 
+  const navigate = useNavigate()
+
   const handleSubmit = e => {
     e.preventDefault()
 
     setFormError('')
 
-    //check all values
+    try {
+      new URL(image)
+    } catch (error) {
+      setFormError('Insira uma URL válida para sua imagem.')
+    }
+
+    const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
+
+    if (!title || !image || !body || !tags) {
+      setFormError('Por favor preencha todos os campos.')
+    }
+
+    if (formError) return;
+
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName
     })
+
+    console.log(formError)
+
+    navigate('/')
 
   }
 
@@ -80,9 +100,10 @@ function CreatePost() {
             onChange={e => setTags(e.target.value)}
           />
         </label>
-        {!response.loading && <button className='btn'>Postar</button>}
+        {!response.loading && <button className='btn' onClick={handleSubmit}>Postar</button>}
         {response.loading && <button className='btn' disabled>Aguarde...</button>}
         {response.error && <p className='error'>{response.error}</p>}
+        {formError && <p className='error'>{formError}</p>}
       </form>
     </div>
   )
