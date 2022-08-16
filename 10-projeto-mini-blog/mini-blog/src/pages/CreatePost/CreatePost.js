@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import styles from './CreatePost.module.css'
+import { useIsertDocument } from '../../hooks/useInsertDocument'
+import { useAuthValue } from '../../context/AuthContext'
 
 function CreatePost() {
 
@@ -9,8 +11,25 @@ function CreatePost() {
   const [tags, setTags] = useState('')
   const [formError, setFormError] = useState('')
 
+  const { insertDocument, response } = useIsertDocument('posts')
+
+  const { user } = useAuthValue()
+
   const handleSubmit = e => {
     e.preventDefault()
+
+    setFormError('')
+
+    //check all values
+    insertDocument({
+      title,
+      image,
+      body,
+      tags,
+      uid: user.uid,
+      createdBy: user.displayName
+    })
+
   }
 
   return (
@@ -61,10 +80,9 @@ function CreatePost() {
             onChange={e => setTags(e.target.value)}
           />
         </label>
-        <button className="btn">Postar</button>
-        {/*!loading && <button className='btn' onClick={handleSubmit}>Cadastrar</button>}
-        {loading && <button className='btn' onClick={handleSubmit} disabled>Aguarde...</button>}
-        {error && <p className='error'>{error}</p>*/}
+        {!response.loading && <button className='btn'>Postar</button>}
+        {response.loading && <button className='btn' disabled>Aguarde...</button>}
+        {response.error && <p className='error'>{response.error}</p>}
       </form>
     </div>
   )

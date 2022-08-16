@@ -24,7 +24,7 @@ const insertReducer = (state, action) => {
 
 export const useIsertDocument = (docCollection) => {
 
-    const [response, dispatch] = useReducer(insertReducer, initialState)
+    const [response, dispatch] = useReducer(initialState, insertReducer)
 
     //memory leak
 

@@ -7,8 +7,8 @@ import {
     updateProfile,
     signOut,
 } from 'firebase/auth'
-import { useEffect } from 'react'
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
 
 export const useAuthentication = () => {
 
@@ -37,8 +37,8 @@ export const useAuthentication = () => {
         setError(null)
 
         try {
-            
-            const {user} = await createUserWithEmailAndPassword(
+
+            const { user } = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
                 data.password
@@ -53,13 +53,13 @@ export const useAuthentication = () => {
             return user
 
         } catch (error) {
-            
+
             console.log(error)
             console.log(typeof error.message)
 
             let systemErrorMessage
 
-            if(error.message.includes('Password')) {
+            if (error.message.includes('Password')) {
                 systemErrorMessage = 'A senha precisa conter no mínimo 6 caracteres.'
             } else if (error.message.includes('email-already')) {
                 systemErrorMessage = 'E-mail já cadastrado. Tente novamente.'
@@ -76,7 +76,7 @@ export const useAuthentication = () => {
     //logout 
 
     const logout = () => {
-        
+
         signOut(auth)
 
     }
@@ -91,16 +91,16 @@ export const useAuthentication = () => {
         setError(null)
 
         try {
-            
+
             await signInWithEmailAndPassword(auth, data.email, data.password)
 
             setLoading(false)
 
         } catch (error) {
-            
+
             let systemErrorMessage
 
-            if(error.message.includes('user-not-found')) {
+            if (error.message.includes('user-not-found')) {
                 systemErrorMessage = 'Usuário não encontrado.'
             } else if (error.message.includes('wrong-password')) {
                 systemErrorMessage = 'Senha incorreta.'
