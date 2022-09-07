@@ -20,6 +20,7 @@ const HookUseState = () => {
 
     return (
         <div>
+            <hr />
             <h2>Use State</h2>
             <p>Variável: {name}</p>
             <p>Estado: {stateName}</p>
