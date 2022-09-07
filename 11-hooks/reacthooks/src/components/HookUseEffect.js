@@ -18,6 +18,16 @@ const HookUseEffect = () => {
         setNumber(number + 1)
     }
 
+    //cleanup
+    /*useEffect(() => {
+        const timer = setTimeout(() => {
+            console.log('Hello World')
+            setAnotherNumber(anotherNumber + 1)
+        }, 2000)
+
+        return () => clearTimeout(timer)
+    }, [anotherNumber])*/
+
     return (
         <div>
             <hr />
