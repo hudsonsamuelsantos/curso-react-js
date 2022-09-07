@@ -5,6 +5,9 @@ const HookUseEffect = () => {
     //sem dependencias ele executa quando o componente é renderizado
     useEffect(() => console.log('Executei!'))
 
+    //com dependencias vazias executa só uma vez, quando o componente é renderizado
+    useEffect(() => console.log('Executei apenas uma vez!'), [])
+
     const [number, setNumber] = useState(1)
 
     const increment = () => {
