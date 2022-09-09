@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import HookUseCallback from '../components/HookUseCallback'
 import { SomeContext } from '../components/HookUseContext'
 import HookUseEffect from '../components/HookUseEffect'
 import HookUseReducer from '../components/HookUseReducer'
@@ -19,6 +20,7 @@ const Home = () => {
             <p>Valor: {contextValue}</p>
             <p>Numero do contexto: {contextNumber}</p>
             <HookUseRef />
+            <HookUseCallback />
         </div>
     )
 }
