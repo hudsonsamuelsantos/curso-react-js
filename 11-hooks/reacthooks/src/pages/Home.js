@@ -3,6 +3,7 @@ import HookUseCallback from '../components/HookUseCallback'
 import { SomeContext } from '../components/HookUseContext'
 import HookUseEffect from '../components/HookUseEffect'
 import HookUseLayoutEffect from '../components/HookUseLayoutEffect'
+import HookUseMemo from '../components/HookUseMemo'
 import HookUseReducer from '../components/HookUseReducer'
 import HookUseRef from '../components/HookUseRef'
 import HookUseState from '../components/HookUseState'
@@ -23,6 +24,7 @@ const Home = () => {
             <HookUseRef />
             <HookUseCallback />
             <HookUseLayoutEffect />
+            <HookUseMemo />
         </div>
     )
 }
