@@ -5,7 +5,6 @@ const router = express()
 const { register, login, getCurrentUser, update } = require("../controllers/UserController")
 
 // middlewares
-// algo que executa no meio de uma req 
 const validate = require("../middlewares/handleValidation")
 const {
     userCreateValidation,
