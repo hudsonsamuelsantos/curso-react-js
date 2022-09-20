@@ -2,7 +2,7 @@ const User = require("../models/User")
 
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const { default: mongoose } = require("mongoose")
+const mongoose = require("mongoose")
 
 const jwtSecret = process.env.JWT_SECRET
 
@@ -93,7 +93,7 @@ const update = async (req, res) => {
 
     const reqUser = req.user
 
-    const user = await User.findById(mongoose.Types.ObjectId(reqUser._id).select("-password"))
+    const user = await User.findById(mongoose.Types.ObjectId(reqUser._id)).select("-password")
 
     if (name) {
         user.name = name
