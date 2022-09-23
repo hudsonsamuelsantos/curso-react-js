@@ -132,7 +132,7 @@ const updatePhoto = async (req, res) => {
     res.status(200).json({ photo, message: "Foto atualizada com sucesso!" })
 }
 
-// like functionaly
+// like functionality
 const likePhoto = async (req, res) => {
     const { id } = req.params
 
