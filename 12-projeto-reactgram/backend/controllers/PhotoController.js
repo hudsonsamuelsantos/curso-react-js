@@ -100,10 +100,43 @@ const getPhotoById = async (req, res) => {
     res.status(200).json({ photo })
 }
 
+// update a photo
+const updatePhoto = async (req, res) => {
+    const { id } = req.params
+    const { title } = req.body
+
+    const reqUser = req.user
+
+    const photo = await Photo.findById(id)
+
+    // check if photo exists
+    if (!photo) {
+        res.status(404).json({ errors: ["Foto não encontrada."] })
+        return
+    }
+
+    // check if photo belongs to user
+    if (!photo.userId.equals(reqUser._id)) {
+        res
+            .status(422)
+            .json({
+                errors: ["Ocorreu um erro, por favor tente novamente."]
+            })
+        return
+    }
+
+    if (title) {
+        photo.title = title
+    }
+
+    res.status(200).json({ photo, message: "Foto atualizada com sucesso!" })
+}
+
 module.exports = {
     insertPhoto,
     deletePhoto,
     getAllPhotos,
     getUserPhotos,
-    getPhotoById
+    getPhotoById,
+    updatePhoto
 }
