@@ -11,19 +11,28 @@ import Login from './pages/Auth/Login'
 
 // components
 import NavBar from './components/NavBar/NavBar'
-import Footer from './components/Footer/Footer';
+import Footer from './components/Footer/Footer'
+
+// hooks
+import { useAuth } from './hooks/useAuth'
 
 
 function App() {
+  const { auth, loading } = useAuth()
+
+  if (loading) {
+    return <p>Carregando...</p>
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
         <div className="container">
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={auth ? <Home /> : <Navigate to='/login' />} />
+            <Route path='/register' element={!auth ? <Register /> : <Navigate to='/' />} />
+            <Route path='/login' element={!auth ? <Login /> : <Navigate to='/' />} />
           </Routes>
         </div>
         <Footer />
