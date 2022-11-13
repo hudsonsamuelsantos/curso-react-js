@@ -1,5 +1,7 @@
 import './App.css';
 
+import FirstComponent from './components/firstComponent';
+
 function App() {
 
   const name: string = "Hudson"
@@ -17,6 +19,7 @@ function App() {
       <p>Idade: {age}</p>
       {isWorking && <p>Está trabalhando...</p>}
       <h3>{userGreeting(name)}</h3>
+      <FirstComponent />
     </div>
   );
 }
