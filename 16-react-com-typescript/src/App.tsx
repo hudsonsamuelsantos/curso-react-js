@@ -3,6 +3,7 @@ import './App.css';
 import FirstComponent from './components/firstComponent';
 import { SecondComponent } from './components/secondComponent';
 import { Destructuring } from './components/destructuring';
+import { State } from './components/state';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         commentsQty={5}
         tags={["js", "ts", "python"]}
       />
+      <State />
     </div>
   );
 }
