@@ -1,6 +1,8 @@
 import './App.css';
 
 import FirstComponent from './components/firstComponent';
+import { SecondComponent } from './components/secondComponent';
+import { Destructuring } from './components/destructuring';
 
 function App() {
 
@@ -20,6 +22,19 @@ function App() {
       {isWorking && <p>Está trabalhando...</p>}
       <h3>{userGreeting(name)}</h3>
       <FirstComponent />
+      <SecondComponent name="Segundo" />
+      <Destructuring
+        title='Primeiro post'
+        content='Meu conteúdo'
+        commentsQty={10}
+        tags={["js", "ts"]}
+      />
+      <Destructuring
+        title='Segundo post'
+        content='Meu conteúdo 2'
+        commentsQty={5}
+        tags={["js", "ts", "python"]}
+      />
     </div>
   );
 }
