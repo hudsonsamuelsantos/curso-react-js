@@ -3,9 +3,17 @@ interface Props {
     content: string
     commentsQty: number
     tags: string[]
+
+    category: Category
 }
 
-export function Destructuring({ title, content, commentsQty, tags }: Props) {
+export enum Category {
+    TS = "TypeScript",
+    JS = "JavaScript",
+    P = "Python"
+}
+
+export function Destructuring({ title, content, commentsQty, tags, category }: Props) {
     return (
         <div>
             <>
@@ -15,6 +23,7 @@ export function Destructuring({ title, content, commentsQty, tags }: Props) {
                 {tags.map(tag => (
                     <span>#{tag} </span>
                 ))}
+                <h2>{category}</h2>
             </>
         </div>
     )

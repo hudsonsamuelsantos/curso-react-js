@@ -2,7 +2,7 @@ import './App.css';
 
 import FirstComponent from './components/firstComponent';
 import { SecondComponent } from './components/secondComponent';
-import { Destructuring } from './components/destructuring';
+import { Category, Destructuring } from './components/destructuring';
 import { State } from './components/state';
 
 function App() {
@@ -29,12 +29,14 @@ function App() {
         content='Meu conteúdo'
         commentsQty={10}
         tags={["js", "ts"]}
+        category={Category.JS}
       />
       <Destructuring
         title='Segundo post'
         content='Meu conteúdo 2'
         commentsQty={5}
         tags={["js", "ts", "python"]}
+        category={Category.P}
       />
       <State />
     </div>
