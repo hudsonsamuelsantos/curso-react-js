@@ -5,14 +5,19 @@ import { SecondComponent } from './components/secondComponent';
 import { Category, Destructuring } from './components/destructuring';
 import { State } from './components/state';
 import { createContext } from 'react';
+import { Context } from './components/context';
+
+interface UserAppContext {
+  user: string
+  age: number
+  isAdmin: boolean
+}
+
+type colors = "vermelho" | "azul" | "verde"
+
+export const AppContext = createContext<UserAppContext | null>(null)
 
 function App() {
-
-  interface UserAppContext {
-    user: string
-    age: number
-    isAdmin: boolean
-  }
 
   const contextValue: UserAppContext = {
     user: "Hudson",
@@ -20,13 +25,9 @@ function App() {
     isAdmin: true,
   }
 
-  const AppContext = createContext<UserAppContext | null>(null)
-
   const name: string = "Hudson"
   const age: number = 23
   const isWorking: boolean = true
-
-  type colors = "vermelho" | "azul" | "verde"
 
   const selectColor = (color: colors): string => {
     return `A cor selecionada é ${color}`
@@ -63,6 +64,7 @@ function App() {
         <State />
         <span>{selectColor('azul')}</span>
       </div>
+      <Context />
     </AppContext.Provider>
   );
 }
