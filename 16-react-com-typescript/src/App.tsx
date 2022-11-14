@@ -11,6 +11,12 @@ function App() {
   const age: number = 23
   const isWorking: boolean = true
 
+  type colors = "vermelho" | "azul" | "verde"
+
+  const selectColor = (color: colors): string => {
+    return `A cor selecionada é ${color}`
+  }
+
   const userGreeting = (name: string): string => {
     return `Olá ${name}!`
   }
@@ -39,6 +45,7 @@ function App() {
         category={Category.P}
       />
       <State />
+      <span>{selectColor('azul')}</span>
     </div>
   );
 }
