@@ -8,6 +8,7 @@ import { Header } from "./components/header"
 import { Footer } from "./components/footer"
 import { TaskForm } from "./components/taskForm";
 import { TaskList } from "./components/taskList";
+import { Modal } from "./components/modal";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([])
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <div>
+      <Modal />
       <Header />
       <main className={styles.main}>
         <div>
