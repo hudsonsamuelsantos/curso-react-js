@@ -2,15 +2,16 @@ import styles from "./taskForm.module.css"
 
 import { ITask } from "../interfaces/Task"
 
-import { ChangeEvent, FormEvent, SetStateAction, useState } from "react"
+import { ChangeEvent, FormEvent, SetStateAction, useEffect, useState } from "react"
 
 interface Props {
     btnText: string
     taskList: ITask[]
     setTaskList?: React.Dispatch<SetStateAction<ITask[]>>
+    task?: ITask | null
 }
 
-export function TaskForm({ btnText, taskList, setTaskList }: Props) {
+export function TaskForm({ btnText, taskList, setTaskList, task }: Props) {
     const [id, setId] = useState<number>(0)
     const [title, setTitle] = useState<string>("")
     const [difficulty, setDifficulty] = useState<number>(0)
@@ -35,6 +36,14 @@ export function TaskForm({ btnText, taskList, setTaskList }: Props) {
             setDifficulty(parseInt(e.target.value))
         }
     }
+
+    useEffect(() => {
+        if (task) {
+            setId(task.id)
+            setTitle(task.title)
+            setDifficulty(task.difficulty)
+        }
+    }, [task])
 
     return (
         <form onSubmit={addTaskHandler} className={styles.form}>
