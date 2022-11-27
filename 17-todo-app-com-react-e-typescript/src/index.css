@@ -4,6 +4,15 @@
   font-family: Helvetica;
 }
 
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  height: max-content;
+  min-height: 100vh;
+}
+
 .hide {
   display: none !important;
 }
